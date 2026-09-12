@@ -1,0 +1,51 @@
+public class Problem5 {
+    public static void main(String[] args) {
+
+        Folder phpDemo1 = new Folder("php_demo1");
+
+        Folder sourceFiles =
+                phpDemo1.addFolder("Source Files");
+
+        phpDemo1.addFolder("Include Path");
+        phpDemo1.addFolder("Remote Files");
+
+        sourceFiles.addFolder(".phalcon");
+
+        Folder app =
+                sourceFiles.addFolder("app");
+
+        app.addFolder("config");
+        app.addFolder("controllers");
+        app.addFolder("library");
+        app.addFolder("migrations");
+        app.addFolder("models");
+        app.addFolder("views");
+
+        sourceFiles.addFolder("cache");
+
+        Folder publicFolder =
+                sourceFiles.addFolder("public");
+
+        publicFolder.addFile(".htaccess");
+        publicFolder.addFile(".htrouter.php");
+        publicFolder.addFile("index.html");
+
+        System.out.println("ORIGINAL STRUCTURE");
+        System.out.println("------------------");
+        phpDemo1.print();
+
+        sourceFiles.deleteFolder("app");
+
+        System.out.println();
+        System.out.println("AFTER DELETING APP");
+        System.out.println("------------------");
+        phpDemo1.print();
+
+        sourceFiles.deleteFolder("public");
+
+        System.out.println();
+        System.out.println("AFTER DELETING PUBLIC");
+        System.out.println("---------------------");
+        phpDemo1.print();
+    }
+}
